@@ -1,0 +1,45 @@
+{
+  "name": "@my-libs/rn-sms-service",
+  "title": "React Native Read Sms",
+  "version": "1.0.6",
+  "private": true,
+  "description": "This plugin is used to read new recived sms.",
+  "main": "./dist",
+  "types": "./dist",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "postinstall": "yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KetanDhopeshwarkar/react-native-read-sms",
+    "baseUrl": "https://github.com/KetanDhopeshwarkar/react-native-read-sms"
+  },
+  "keywords": [
+    "android",
+    "iOS",
+    "react-native-read-sms",
+    "read-sms",
+    "react-native"
+  ],
+  "author": {
+    "name": "Trevor Porter",
+    "email": "trkporter@ucdavis.edu"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.19",
+    "@types/react-native": "^0.64.13",
+    "typescript": "^4.4.2"
+  },
+  "bugs": {
+    "url": "https://github.com/KetanDhopeshwarkar/react-native-read-sms/issues"
+  },
+  "homepage": "https://github.com/KetanDhopeshwarkar/react-native-read-sms#readme"
+}
