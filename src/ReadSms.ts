@@ -35,7 +35,7 @@ export async function startReadSMS(callback: ReadSMSCallback): Promise<void> {
       callback("error", {}, "Required RECEIVE_SMS and READ_SMS permission");
     }
   } else {
-    callback("error", "", "ReadSms Plugin is only for android platform");
+    callback("error", {}, "ReadSms Plugin is only for android platform");
   }
 }
 
@@ -61,13 +61,19 @@ export async function requestReadSMSPermission(): Promise<boolean> {
       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
       PermissionsAndroid.PERMISSIONS.READ_SMS,
     ]);
-    console.log(status["android.permission.RECEIVE_SMS"]);
-    // if (status === PermissionsAndroid.RESULTS.GRANTED) return true;
-    // if (status === PermissionsAndroid.RESULTS.DENIED) {
-    //   console.log("Read Sms permission denied by user.", status);
-    // } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-    //   console.log("Read Sms permission revoked by user.", status);
-    // }
+    const manyStatus = [
+      status["android.permission.RECEIVE_MMS"],
+      status["android.permission.READ_SMS"],
+    ];
+    if (manyStatus.every((it) => it === PermissionsAndroid.RESULTS.GRANTED))
+      return true;
+    if (manyStatus.some((it) => it === PermissionsAndroid.RESULTS.DENIED)) {
+      console.log("Read Sms permission denied by user.", status);
+    } else if (
+      manyStatus.some((it) => it === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN)
+    ) {
+      console.log("Read Sms permission revoked by user.", status);
+    }
     return false;
   }
   return true;
